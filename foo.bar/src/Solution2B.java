@@ -1,6 +1,3 @@
-import java.util.LinkedList;
-import java.util.Queue;
-
 /*
 Don't Get Volunteered!
 ======================
@@ -61,6 +58,10 @@ Solution.solution(0, 1)
 Output:
     3
 */
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Solution2B {
     public static int solution(int src, int dest) {
         int[][] ans = new int[8][8];

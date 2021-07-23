@@ -25,17 +25,6 @@ void fun(int a, int b) {
   }
 }
 
-long long int f(long long int a, long long int b) {
-  if (a == 1 && b == 1) return 0;
-  long long int d = b - a;
-  if (a % d == 0) {
-    assert(d == 1);
-    return a / d;
-  }
-  long long int xx = a / d;
-  return 1 + xx + f(a % d, d);
-}
-
 int main (void) {
   for (int i = 0; i <= 1000; ++i) {
     for (int j = 0; j <= 1000; ++j) {
@@ -44,6 +33,10 @@ int main (void) {
   }
   dp[1][1] = 0;
   fun(1, 1);
-  cout << dp[17][104] << endl;
+  for (int i = 1; i <= 100; ++i) {
+    for (int j = i + 1; j <= 100; ++j) {
+      printf("%d %d %d\n", i, j, dp[i][j]);
+    }
+  }
   return 0;
 }
