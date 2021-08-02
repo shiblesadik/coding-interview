@@ -6,16 +6,19 @@ public:
       index[nums[i]].push_back(i);
     }
     vector<vector<int> > initTriplets;
-    set<int> i_index, j_index;
+    unordered_set<int> i_index, j_index;
     int sum = 0, req = 0;
     for (int i = 0; i < nums.size(); ++i) {
+      if (i_index.find(nums[i]) != i_index.end()) continue;
+      else i_index.insert(nums[i]);
+      j_index.clear();
       for (int j = i + 1; j < nums.size(); ++j) {
+        if (j_index.find(nums[j]) != j_index.end()) continue;
+        else j_index.insert(nums[j]);
         sum = nums[i] + nums[j];
         req = sum * -1;
-        // printf("%d %d :: %d %d %d\n", i, j, nums[i], nums[j], req);
         if (index.find(req) != index.end()) {
           int k = upper_bound(index[req].begin(), index[req].end(), j) - index[req].begin();
-          // printf("%d %d %d\n", i, j, k < index[req].size() ? index[req][k]: 999);
           if (k < index[req].size()) {
             k = index[req][k];
             vector<int> v{nums[i], nums[j] , nums[k]};
